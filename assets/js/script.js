@@ -1,6 +1,6 @@
-let num1;
-let num2;
-let result;
+let num1 = 0;
+let num2 = 0;
+let result = 0;
 let input = "";
 let operator;
 
@@ -23,7 +23,7 @@ buttons.forEach(button => {
             input = "";
             //VERIFIENA RAHA EFA DEFINI num1 SINON stockena ANATY num1 ny valeur affiché
             //STOCKENA ANATY operator ny operation choisi
-            if (typeof num1 === "undefined") {
+            if (num1 == 0) {
                 num1 = parseInt(display.textContent);
                 operator = button.textContent
             }
@@ -36,10 +36,10 @@ buttons.forEach(button => {
             //STOCKENA ANATY OPERATOR NDRAY le VAOVAO 
             else {
                 num2 = parseInt(display.textContent);
-                num1 = operate(num1, num2, operator);
+                num1 = calculate(num1, num2, operator);
                 display.textContent = num1;
 
-                num2 = "";
+                num2 = 0;
                 operator = button.textContent;
             }
 
@@ -54,15 +54,18 @@ buttons.forEach(button => {
         }
 
         else if (button.id == "equal") {
-            num1 = operate(num1, parseInt(display.textContent), operator);
+            num1 = calculate(num1, parseInt(display.textContent), operator);
             display.textContent = num1;
+
+            num1 = 0;
+            num2 = 0;
         }
     });
 });
 
 
 
-const operate = (number1, number2, typeofOperation) => {
+const calculate = (number1, number2, typeofOperation) => {
     switch (typeofOperation) {
         case "+": return number1 + number2;
         case "-": return number1 - number2;
