@@ -41,7 +41,6 @@ body {
     display: flex;
     flex-direction: column;
     color: white;
-    
     font-size: 50px;
     text-align: right;
     margin: 10px;
@@ -74,7 +73,7 @@ body {
 }
 
 .gray {
-    background-color: #45474B;
+    background-color: #D4D4D2;
     color: black;
 }
 
@@ -83,6 +82,11 @@ body {
     color: white;
 }
 
+.darkGray{
+    background-color: #505050;
+    color: white;
+}
 .grow {
     flex-grow: 2;
 }
+
