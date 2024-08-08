@@ -4,19 +4,8 @@ let result;
 let input = "";
 let operator;
 
-const operate = (num1, num2, operator) => {
-    switch (operator) {
-        case "+": return num1 + num2;
-        case "-": return num1 - num2;
-        case "X": return num1 * num2;
-        case "/": return num1 / num2;
-        case "%": return num1 % num2;
-    }
-}
-
 
 const display = document.querySelector(".input");
-
 
 
 const buttons = document.querySelectorAll(".button");
@@ -28,26 +17,57 @@ buttons.forEach(button => {
             input += button.textContent;
             display.textContent = input;
         }
-        if (button.id == "operator") {
+
+        else if (button.id == "operator") {
+            /**PSEUDOCODE */
+            input = "";
+            //VERIFIENA RAHA EFA DEFINI num1 SINON stockena ANATY num1 ny valeur affiché
+            //STOCKENA ANATY operator ny operation choisi
             if (typeof num1 === "undefined") {
                 num1 = parseInt(display.textContent);
-                console.log("num1 : " + num1);
-                operator = button.textContent;
-                input = "";
-            } else if (typeof num2 === "undefined") {
-                num2 = parseInt(display.textContent)
-                console.log("num2 : " + num1);
+                operator = button.textContent
+            }
+            //MIKITIKA FANNDROANY
+            //STOCKENA ANATY NUM2 le VALEUR AFFICHE
+            //ATAO TOTAL AN num2 sy NUM1
+            //STOCKENA ANATY VALEUR num1 IO TOTAL IO
+            //OVAINA LE DISPLAY
+            //FLUSHENA num2
+            //STOCKENA ANATY OPERATOR NDRAY le VAOVAO 
+            else {
+                num2 = parseInt(display.textContent);
+                num1 = operate(num1, num2, operator);
+                display.textContent = num1;
+
+                num2 = "";
                 operator = button.textContent;
             }
 
+
+
+
+            //MIKITIKA FANINTELONY
+            //
+
+
+
         }
 
-        if (button.id == "equal") {
-            num2 = parseInt(display.textContent);
-            result = operate(num1, num2, operator);
-            console.log(result);
+        else if (button.id == "equal") {
+            num1 = operate(num1, parseInt(display.textContent), operator);
+            display.textContent = num1;
         }
-
     });
 });
 
+
+
+const operate = (number1, number2, typeofOperation) => {
+    switch (typeofOperation) {
+        case "+": return number1 + number2;
+        case "-": return number1 - number2;
+        case "X": return number1 * number2;
+        case "/": return number1 / number2;
+        case "%": return number1 % number2;
+    }
+}
